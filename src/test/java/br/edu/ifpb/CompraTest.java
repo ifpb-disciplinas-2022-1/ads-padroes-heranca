@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * @since 19/05/2022, 09:20:50
  */
 public class CompraTest {
-
     @Test
     public void testEntregaPorSedex(){
         Compra compra = new Compra();
@@ -33,7 +32,6 @@ public class CompraTest {
         double esperado = 1.0; // 10 itens
         assertEquals(esperado,taxas, 0.0001);
     }
-
     @Test
     public void testEntregaPorCorreios(){
         Compra compra = new Compra();
@@ -59,5 +57,33 @@ public class CompraTest {
         double esperado = 6.0; // 10 itens
         assertEquals(esperado,taxas, 0.0001);
     }
-    
+    @Test
+    public void testCompraSemDesconto(){
+        Compra compra = new Compra();
+        double taxas = compra.desconto();
+        double esperado = 0.0;
+        assertEquals(esperado,taxas, 0.0001);
+    }
+    @Test
+    public void testCompraComDescontoNosItens(){
+        Desconto desconto = new DescontoAbsoluto(100.00);
+        Compra compra = new Compra(desconto);
+        compra.adicionar(1,
+                new Produto("TV", 1000.0)
+        );
+        double taxas = compra.desconto();
+        double esperado = 900.0;
+        assertEquals(esperado,taxas, 0.0001);
+    }
+    @Test
+    public void testCompraComDescontoPercentual(){
+        Desconto desconto = new DescontoPercentual(15); //15%
+        Compra compra = new Compra(desconto);
+        compra.adicionar(1,
+                new Produto("TV", 1000.0)
+        );
+        double taxas = compra.desconto();
+        double esperado = 850.0;
+        assertEquals(esperado,taxas, 0.0001);
+    }
 }
