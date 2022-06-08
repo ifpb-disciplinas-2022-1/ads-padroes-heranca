@@ -1,6 +1,8 @@
-package br.edu.ifpb;
+package br.edu.ifpb.nullobject;
 
-public class DescontoAbsoluto implements Desconto{
+import br.edu.ifpb.Desconto;
+
+public class DescontoAbsoluto implements Desconto {
     private final double valor;
     public DescontoAbsoluto(double valor) {
         this.valor = valor;

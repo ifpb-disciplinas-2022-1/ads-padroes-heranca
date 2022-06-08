@@ -1,6 +1,8 @@
-package br.edu.ifpb;
+package br.edu.ifpb.nullobject;
 
-public class DescontoPercentual implements Desconto{
+import br.edu.ifpb.Desconto;
+
+public class DescontoPercentual implements Desconto {
     private final int percentual;
     public DescontoPercentual(int valor) {
         this.percentual = valor;

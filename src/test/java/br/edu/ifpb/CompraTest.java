@@ -1,5 +1,7 @@
 package br.edu.ifpb;
 
+import br.edu.ifpb.nullobject.DescontoAbsoluto;
+import br.edu.ifpb.nullobject.DescontoPercentual;
 import br.edu.ifpb.strategy.Correios;
 import br.edu.ifpb.strategy.FEDEX;
 import br.edu.ifpb.strategy.PAC;
@@ -55,35 +57,6 @@ public class CompraTest {
         Compra compra = new Compra();
         double taxas = compra.calcularTaxas(c -> c.itens() * 0.6);
         double esperado = 6.0; // 10 itens
-        assertEquals(esperado,taxas, 0.0001);
-    }
-    @Test
-    public void testCompraSemDesconto(){
-        Compra compra = new Compra();
-        double taxas = compra.desconto();
-        double esperado = 0.0;
-        assertEquals(esperado,taxas, 0.0001);
-    }
-    @Test
-    public void testCompraComDescontoNosItens(){
-        Desconto desconto = new DescontoAbsoluto(100.00);
-        Compra compra = new Compra(desconto);
-        compra.adicionar(1,
-                new Produto("TV", 1000.0)
-        );
-        double taxas = compra.desconto();
-        double esperado = 900.0;
-        assertEquals(esperado,taxas, 0.0001);
-    }
-    @Test
-    public void testCompraComDescontoPercentual(){
-        Desconto desconto = new DescontoPercentual(15); //15%
-        Compra compra = new Compra(desconto);
-        compra.adicionar(1,
-                new Produto("TV", 1000.0)
-        );
-        double taxas = compra.desconto();
-        double esperado = 850.0;
         assertEquals(esperado,taxas, 0.0001);
     }
 }
