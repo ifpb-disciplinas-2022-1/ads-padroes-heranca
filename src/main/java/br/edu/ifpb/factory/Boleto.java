@@ -1,7 +1,6 @@
 package br.edu.ifpb.factory;
 
-import br.edu.ifpb.Pagamento;
-
+import br.edu.ifpb.domain.Pagamento;
 import java.time.LocalDate;
 
 public class Boleto implements Pagamento {

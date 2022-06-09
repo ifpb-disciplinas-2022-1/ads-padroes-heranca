@@ -1,11 +1,10 @@
 package br.edu.ifpb;
 
+import br.edu.ifpb.domain.Desconto;
+import br.edu.ifpb.domain.venda.Produto;
+import br.edu.ifpb.domain.Venda;
 import br.edu.ifpb.nullobject.DescontoAbsoluto;
 import br.edu.ifpb.nullobject.DescontoPercentual;
-import br.edu.ifpb.strategy.Correios;
-import br.edu.ifpb.strategy.FEDEX;
-import br.edu.ifpb.strategy.PAC;
-import br.edu.ifpb.strategy.Sedex;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DescontoTest {
     @Test
     public void testCompraSemDesconto(){
-        Compra compra = new Compra();
+        Venda compra = new Venda();
         double taxas = compra.desconto();
         double esperado = 0.0;
         assertEquals(esperado,taxas, 0.0001);
@@ -26,7 +25,7 @@ public class DescontoTest {
     @Test
     public void testCompraComDescontoNosItens(){
         Desconto desconto = new DescontoAbsoluto(100.00);
-        Compra compra = new Compra(desconto);
+        Venda compra = new Venda(desconto);
         compra.adicionar(1,
                 new Produto("TV", 1000.0)
         );
@@ -37,7 +36,7 @@ public class DescontoTest {
     @Test
     public void testCompraComDescontoPercentual(){
         Desconto desconto = new DescontoPercentual(15); //15%
-        Compra compra = new Compra(desconto);
+        Venda compra = new Venda(desconto);
         compra.adicionar(1,
                 new Produto("TV", 1000.0)
         );

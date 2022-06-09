@@ -1,5 +1,7 @@
-package br.edu.ifpb;
+package br.edu.ifpb.domain;
 
+import br.edu.ifpb.domain.venda.ItemDeVenda;
+import br.edu.ifpb.domain.venda.Produto;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +11,19 @@ import java.util.List;
  * @mail ricardo.job@ifpb.edu.br
  * @since 19/05/2022, 09:22:50
  */
-public class Compra {
+public class Venda {
 
     private List<ItemDeVenda> itens = new ArrayList<>();
     private LocalDate criadaEm = LocalDate.now();
     private Desconto desconto;
-    public Compra(){
+    public Venda(){
 //        this(new SemDesconto()); // Classe Concreta
 //        this(Desconto.SEMDESCONTO); // Constante
 //        this(new Desconto.SemDesconto()); //SmartClass
         this((total) -> total); //Expression Lambda
     }
     //ctor principal
-    public Compra(Desconto desconto){
+    public Venda(Desconto desconto){
         this.desconto = desconto;
     }
     public void adicionar(int quantidade, Produto produto) {

@@ -1,6 +1,6 @@
 package br.edu.ifpb.factory;
 
-import br.edu.ifpb.Pagamento;
+import br.edu.ifpb.domain.Pagamento;
 
 public class CartaoDeCredito implements Pagamento {
     @Override

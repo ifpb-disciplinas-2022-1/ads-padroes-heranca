@@ -1,6 +1,6 @@
 package br.edu.ifpb.nullobject;
 
-import br.edu.ifpb.Desconto;
+import br.edu.ifpb.domain.Desconto;
 
 public class SemDesconto implements Desconto {
 

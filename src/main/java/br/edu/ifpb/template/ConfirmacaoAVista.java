@@ -1,12 +1,14 @@
 package br.edu.ifpb.template;
 
-import br.edu.ifpb.Compra;
-import br.edu.ifpb.Confirmacao;
-import br.edu.ifpb.Pagamento;
+import br.edu.ifpb.domain.Desconto;
+import br.edu.ifpb.domain.Pagamento;
+import br.edu.ifpb.domain.Venda;
+import br.edu.ifpb.abstractfactory.Confirmacao;
 import br.edu.ifpb.factory.Boleto;
+import br.edu.ifpb.nullobject.DescontoPercentual;
 
 public class ConfirmacaoAVista extends Confirmacao {
-    public ConfirmacaoAVista(Compra compra) {
+    public ConfirmacaoAVista(Venda compra) {
         super(compra);
     }
 
@@ -15,12 +17,18 @@ public class ConfirmacaoAVista extends Confirmacao {
         return new Boleto();
     }
 
-//    @Override
+    @Override
+    protected Desconto desconto() {
+        // Nas compras a vista teremos um desconto de 10%
+        return new DescontoPercentual(10);
+    }
+
+    //    @Override
 //    protected void pagar(double valorTotal) {
 //        System.out.println("Pagamento a vista no valor de: "+valorTotal);
 //    }
     @Override
-    protected void concluir(Compra compra) {
+    protected void concluir(Venda venda) {
         System.out.println("Feito!");
     }
 

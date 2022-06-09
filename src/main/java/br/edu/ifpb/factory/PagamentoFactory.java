@@ -1,9 +1,10 @@
-package br.edu.ifpb;
+package br.edu.ifpb.factory;
 
-import br.edu.ifpb.factory.Boleto;
-import br.edu.ifpb.factory.CartaoDeCredito;
+import br.edu.ifpb.domain.Pagamento;
+import br.edu.ifpb.abstractfactory.Confirmacao;
 import br.edu.ifpb.template.ConfirmacaoAVista;
 
+//Exemplos de Factory
 public class PagamentoFactory {
 
     // 1 - Factory Simples Responsabilidade de criar o tipo Pagamento
